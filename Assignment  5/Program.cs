@@ -4,112 +4,112 @@
 //DivideByZeroException and display “Division by zero is not allowed.” In the finally block 
 //display “Execution completed.” Ensure finally executes regardless of exceptions. 
 
-//using System;
-//class DivisionExample
-//{
-//    static void Main()
-//    {
-//        try
-//        {
-//            Console.Write("Enter numerator: ");
-//            int num1 = Convert.ToInt32(Console.ReadLine());
+using System;
+class DivisionExample
+{
+   static void Main()
+   {
+       try
+       {
+           Console.Write("Enter numerator: ");
+           int num1 = Convert.ToInt32(Console.ReadLine());
 
-//            Console.Write("Enter denominator: ");
-//            int num2 = Convert.ToInt32(Console.ReadLine());
+           Console.Write("Enter denominator: ");
+           int num2 = Convert.ToInt32(Console.ReadLine());
 
-//            int result = num1 / num2;   // May throw DivideByZeroException
+           int result = num1 / num2;   // May throw DivideByZeroException
 
-//            Console.WriteLine("Result = " + result);
-//        }
-//        catch (DivideByZeroException)
-//        {
-//            Console.WriteLine("Division by zero is not allowed.");
-//        }
-//        finally
-//        {
-//            Console.WriteLine("Execution completed.");
-//        }
-//    }
-//}
+           Console.WriteLine("Result = " + result);
+       }
+       catch (DivideByZeroException)
+       {
+           Console.WriteLine("Division by zero is not allowed.");
+       }
+       finally
+       {
+           Console.WriteLine("Execution completed.");
+       }
+   }
+}
 
 
 //Q2.Multiple Catch Blocks 
 //Read console input and convert to int. Handle FormatException, OverflowException, and a 
 //generic Exception, with distinct messages. 
 
-//using System;
-//class MultipleCatchExample
-//{
-//    static void Main()
-//    {
-//        try
-//        {
-//            Console.Write("Enter a number: ");
-//            int number = Convert.ToInt32(Console.ReadLine()); // May throw exceptions
+using System;
+class MultipleCatchExample
+{
+   static void Main()
+   {
+       try
+       {
+           Console.Write("Enter a number: ");
+           int number = Convert.ToInt32(Console.ReadLine()); // May throw exceptions
 
-//            Console.WriteLine("You entered: " + number);
-//        }
-//        catch (FormatException)
-//        {
-//            Console.WriteLine("Invalid input format. Please enter a valid integer.");
-//        }
-//        catch (OverflowException)
-//        {
-//            Console.WriteLine("Number too large or too small for an Int32.");
-//        }
-//        catch (Exception ex)
-//        {
-//            Console.WriteLine("An unexpected error occurred: " + ex.Message);
-//        }
-//        finally
-//        {
-//            Console.WriteLine("Execution completed.");
-//        }
-//    }
-//}
+           Console.WriteLine("You entered: " + number);
+       }
+       catch (FormatException)
+       {
+           Console.WriteLine("Invalid input format. Please enter a valid integer.");
+       }
+       catch (OverflowException)
+       {
+           Console.WriteLine("Number too large or too small for an Int32.");
+       }
+       catch (Exception ex)
+       {
+           Console.WriteLine("An unexpected error occurred: " + ex.Message);
+       }
+       finally
+       {
+           Console.WriteLine("Execution completed.");
+       }
+   }
+}
 
 
 //Q3.Custom Exception — NegativeSalaryException 
 //Define NegativeSalaryException : Exception.If entered salary < 0, throw it and handle with a 
 //clear error message.
 
-//using System;
-//public class NegativeSalaryException : Exception
-//{
-//    public NegativeSalaryException(string message) : base(message)
-//    {
-//    }
-//}
+using System;
+public class NegativeSalaryException : Exception
+{
+   public NegativeSalaryException(string message) : base(message)
+   {
+   }
+}
 
-//public class Program
-//{
-//    public static void CheckSalary()
-//    {
-//        try
-//        {
-//            Console.Write("Enter salary: ");
-//            double salary = Convert.ToDouble(Console.ReadLine());
+public class Program
+{
+   public static void CheckSalary()
+   {
+       try
+       {
+           Console.Write("Enter salary: ");
+           double salary = Convert.ToDouble(Console.ReadLine());
 
-//            if (salary < 0)
-//                throw new NegativeSalaryException("Salary cannot be negative.");
+           if (salary < 0)
+               throw new NegativeSalaryException("Salary cannot be negative.");
 
-//            Console.WriteLine("Salary is valid: " + salary);
-//        }
-//        catch (NegativeSalaryException ex)
-//        {
-//            Console.WriteLine("Error: " + ex.Message);
-//        }
-//        catch (FormatException)
-//        {
-//            Console.WriteLine("Error: Please enter a valid numeric value.");
-//        }
-//    }
+           Console.WriteLine("Salary is valid: " + salary);
+       }
+       catch (NegativeSalaryException ex)
+       {
+           Console.WriteLine("Error: " + ex.Message);
+       }
+       catch (FormatException)
+       {
+           Console.WriteLine("Error: Please enter a valid numeric value.");
+       }
+   }
 
-//    public static void Main(string[] args)
-//    {
-//        CheckSalary();
-//    }
-//}
+   public static void Main(string[] args)
+   {
+       CheckSalary();
+   }
+}
 
 
 
@@ -118,47 +118,47 @@
 //otherwise print remaining balance.
 
 
-//using System;
-//public class InsufficientBalanceException : Exception
-//{
-//    public InsufficientBalanceException(string message) : base(message)
-//    {
-//    }
-//}
+using System;
+public class InsufficientBalanceException : Exception
+{
+   public InsufficientBalanceException(string message) : base(message)
+   {
+   }
+}
 
-//public class Program
-//{
-//    public static void WithDraw()
-//    {
-//        double balance = 5000;
+public class Program
+{
+   public static void WithDraw()
+   {
+       double balance = 5000;
 
-//        try
-//        {
-//            Console.Write("Enter amount to withdraw: ");
-//            double amount = Convert.ToDouble(Console.ReadLine());
+       try
+       {
+           Console.Write("Enter amount to withdraw: ");
+           double amount = Convert.ToDouble(Console.ReadLine());
 
-//            if (amount > balance)
-//                throw new InsufficientBalanceException("Insufficient balance for this withdrawal.");
+           if (amount > balance)
+               throw new InsufficientBalanceException("Insufficient balance for this withdrawal.");
 
-//            balance -= amount;
-//            Console.WriteLine("Withdrawal successful! Remaining balance is: " + balance);
-//        }
-//        catch (InsufficientBalanceException ex)
-//        {
-//            Console.WriteLine("Error: " + ex.Message);
+           balance -= amount;
+           Console.WriteLine("Withdrawal successful! Remaining balance is: " + balance);
+       }
+       catch (InsufficientBalanceException ex)
+       {
+           Console.WriteLine("Error: " + ex.Message);
 
-//        }
-//        catch (FormatException)
-//        {
-//            Console.WriteLine("Error: Please enter a valid numeric amount.");
-//        }
-//    }
+       }
+       catch (FormatException)
+       {
+           Console.WriteLine("Error: Please enter a valid numeric amount.");
+       }
+   }
 
-//    public static void Main(string[] args)
-//    {
-//        WithDraw();
-//    }
-//}
+   public static void Main(string[] args)
+   {
+       WithDraw();
+   }
+}
 
 
 
@@ -167,61 +167,61 @@
 //Demonstrate validation and handling in Main(). 
 
 
-//using System;
-//public class InvalidMarksException : Exception
-//{
-//    public InvalidMarksException(string message) : base(message)
-//    {
-//    }
-//}
-//public class Student
-//{
-//    public int Marks { get; private set; }
+using System;
+public class InvalidMarksException : Exception
+{
+   public InvalidMarksException(string message) : base(message)
+   {
+   }
+}
+public class Student
+{
+   public int Marks { get; private set; }
 
-//    public void setMarks(int marks)
-//    {
-//        if (marks < 0 || marks > 100)
-//            throw new InvalidMarksException("Marks must be between 0 and 100.");
+   public void setMarks(int marks)
+   {
+       if (marks < 0 || marks > 100)
+           throw new InvalidMarksException("Marks must be between 0 and 100.");
 
-//        Marks = marks;
-//    }
-//}
+       Marks = marks;
+   }
+}
 
-//public class Program
-//{
-//    public static void validateMarks()
-//    {
-//        try
-//        {
-//            Console.Write("Enter student marks: ");
+public class Program
+{
+   public static void validateMarks()
+   {
+       try
+       {
+           Console.Write("Enter student marks: ");
 
-//            int marks = Convert.ToInt32(Console.ReadLine());
+           int marks = Convert.ToInt32(Console.ReadLine());
 
-//            Student stu = new Student();
-//            stu.setMarks(marks);
+           Student stu = new Student();
+           stu.setMarks(marks);
 
-//            Console.WriteLine("Marks set successfully: " + stu.Marks);
-//        }
-//        catch (InvalidMarksException ex)
-//        {
-//            Console.WriteLine("Error: " + ex.Message);
-//        }
-//    }
+           Console.WriteLine("Marks set successfully: " + stu.Marks);
+       }
+       catch (InvalidMarksException ex)
+       {
+           Console.WriteLine("Error: " + ex.Message);
+       }
+   }
 
-//    public static void ZeroDevision() { }
-//    public static void multiCatch() { }
-//    public static void CheckSalary() { }
-//    public static void withDraw() { }
+   public static void ZeroDevision() { }
+   public static void multiCatch() { }
+   public static void CheckSalary() { }
+   public static void withDraw() { }
 
-//    static void Main(string[] args)
-//    {
-//        ZeroDevision();
-//        multiCatch();
-//        CheckSalary();
-//        withDraw();
-//        validateMarks();
-//    }
-//}
+   static void Main(string[] args)
+   {
+       ZeroDevision();
+       multiCatch();
+       CheckSalary();
+       withDraw();
+       validateMarks();
+   }
+}
 
 
 
